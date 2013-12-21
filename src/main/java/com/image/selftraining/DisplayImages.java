@@ -38,12 +38,14 @@ public class DisplayImages {
     private Timer t;
     private Image img;
     
+    private int screenWidth = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().width;
+    private int screenHeigh = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().height;
+    
     @PostConstruct
     public void initialise() throws IOException {
         converter.convertAll();
         images.loadAll("convertedPictures");
-        setUp();
-        setBack();
+        frame.setSize(screenWidth, screenHeigh);
     }
 
     private JPanel makePicturePanel() {
@@ -67,7 +69,7 @@ public class DisplayImages {
         return buttonPanel;
     }
     
-    public void setBack() throws IOException {
+    public void setBackGround() throws IOException {
         img = ImageIO.read(new File("blue-christmas-background.jpg"));
         frame.setContentPane(new JPanel(new BorderLayout()) {
             @Override public void paintComponent(Graphics g) {
@@ -79,7 +81,7 @@ public class DisplayImages {
 
     public void setUpFrame() {
         try {
-            setBack();
+            setBackGround();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -102,10 +104,6 @@ public class DisplayImages {
         } else {
             t.setDelay(50);
         }
-    }
-    
-    public void setUp() {
-        frame.setSize(1920, 1000);
     }
     
     public void setSleep() {
