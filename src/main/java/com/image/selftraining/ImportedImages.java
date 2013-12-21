@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
 
 import org.slf4j.Logger;
@@ -21,11 +20,12 @@ public class ImportedImages {
     private List<BufferedImage> imageList = new ArrayList<BufferedImage>();
     private int position;
     
-    @PostConstruct
-    public void loadAll() {
+    //@PostConstruct
+    public void loadAll(String folder) {
+        imageList = new ArrayList<BufferedImage>();
         String filename;
         for (int i = 0; i < 2 + 2; i++) {
-            filename = "pictures/Sea" + String.valueOf(i) + ".jpg";
+            filename = folder + "/Sea" + String.valueOf(i) + ".jpg";
             loadToTheList(filename);
         }
     }
@@ -61,6 +61,10 @@ public class ImportedImages {
     public BufferedImage getImage() {
         BufferedImage image = imageList.get(position);
         return image;
+    }
+
+    public List<BufferedImage> getImageList() {
+        return imageList;
     }
 
 }

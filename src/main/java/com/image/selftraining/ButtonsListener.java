@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-//@Qualifier("B")
 public class ButtonsListener implements ActionListener {
 
     @Autowired

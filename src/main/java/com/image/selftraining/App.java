@@ -14,8 +14,6 @@ public class App {
     public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Config.class);
         DisplayImages displayer = ctx.getBean(DisplayImages.class);
-        displayer.setUp();
-        displayer.setBack();
         displayer.setUpFrame();
         displayer.display();
     }

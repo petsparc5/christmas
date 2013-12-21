@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -31,9 +32,19 @@ public class DisplayImages {
     private TimerListener timerListener;
     @Autowired
     private ButtonsListener buttonListener;
+    @Autowired
+    private Converter converter;
     private JFrame frame = new JFrame("SeaPictures (1/7)");
     private Timer t;
     private Image img;
+    
+    @PostConstruct
+    public void initialise() throws IOException {
+        converter.convertAll();
+        images.loadAll("convertedPictures");
+        setUp();
+        setBack();
+    }
 
     private JPanel makePicturePanel() {
         if (!buttonListener.isAutoViewOff()) {
@@ -89,7 +100,7 @@ public class DisplayImages {
         if (!buttonListener.isAutoViewOff()) {
             t.setDelay(5000);            
         } else {
-            t.setDelay(100);
+            t.setDelay(50);
         }
     }
     
