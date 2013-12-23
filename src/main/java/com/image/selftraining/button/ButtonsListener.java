@@ -1,10 +1,13 @@
-package com.image.selftraining;
+package com.image.selftraining.button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.image.selftraining.display.Player;
+import com.image.selftraining.reader.ImportedImages;
 
 @Component
 public class ButtonsListener implements ActionListener {
@@ -15,7 +18,7 @@ public class ButtonsListener implements ActionListener {
     private ImportedImages images;
     private boolean autoViewOff = false;
     @Autowired
-    private DisplayImages displayImages;
+    private Player displayImages;
 
     public void actionPerformed(ActionEvent e) {
 
@@ -24,8 +27,8 @@ public class ButtonsListener implements ActionListener {
             autoViewOff = !autoViewOff;
             buttons.getNextButton().setEnabled(autoViewOff);
             buttons.getPreviousButton().setEnabled(autoViewOff);
-            buttons.getToggleButton().setText(getAutoViewMessage());
-            displayImages.setSleep();
+            buttons.toggleAutoViewMessage();
+            displayImages.sleep();
             displayImages.startTimer();
         }
 
@@ -36,16 +39,6 @@ public class ButtonsListener implements ActionListener {
         if ("prev".equals(e.getActionCommand())) {
             images.setPrevImage();
         }
-    }
-    
-    private String getAutoViewMessage() {
-        String message;
-        if (autoViewOff) {
-            message = "AutoViewing OFF";
-        } else {
-            message = "AutoViewing ON";
-        }
-        return message;
     }
 
     public boolean isAutoViewOff() {

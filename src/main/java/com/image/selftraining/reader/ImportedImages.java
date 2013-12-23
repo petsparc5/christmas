@@ -1,7 +1,6 @@
-package com.image.selftraining;
+package com.image.selftraining.reader;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class ImportedImages {
 
     private void loadToTheList(String filename) {
         try {
-            BufferedImage img = ImageIO.read(new File(filename));
+            BufferedImage img = ImageIO.read(getClass().getClassLoader().getResource(filename));
             imageList.add(img);
         } catch (IOException e) {
             logger.error("File {} could not be located!", filename);
@@ -65,6 +64,10 @@ public class ImportedImages {
 
     public List<BufferedImage> getImageList() {
         return imageList;
+    }
+    
+    public int getPosition() {
+        return position;
     }
 
 }
