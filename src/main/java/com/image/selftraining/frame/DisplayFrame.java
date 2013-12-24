@@ -69,7 +69,7 @@ public class DisplayFrame {
     }
 
     public void setFrameName() {
-        frame.setTitle("SeaPictures (" + Integer.toString(images.getPosition()+1) + "/65)");
+        frame.setTitle("SeaPictures (" + Integer.toString(images.getPosition()+1) + "/48)");
     }
     
     public void setUpFrame() {

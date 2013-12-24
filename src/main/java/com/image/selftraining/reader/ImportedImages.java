@@ -16,14 +16,14 @@ import org.springframework.stereotype.Component;
 public class ImportedImages {
     
     private final Logger logger = LoggerFactory.getLogger(ImportedImages.class);
-    private List<BufferedImage> imageList = new ArrayList<BufferedImage>(64);
+    private List<BufferedImage> imageList = new ArrayList<BufferedImage>();
     private int position;
     
     //@PostConstruct
     public void loadAll(String folder) {
         imageList = new ArrayList<BufferedImage>();
         String filename;
-        for (int i = 0; i < 65; i++) {
+        for (int i = 0; i < 48; i++) {
             filename = folder + "/Photo " + String.valueOf(i) + ".jpg";
             loadToTheList(filename);
         }
@@ -40,7 +40,7 @@ public class ImportedImages {
 
     public void setRandomImage() {
         Random generator = new Random();
-        position = generator.nextInt(65);
+        position = generator.nextInt(48);
     }
     
     public void setNextImage() {
