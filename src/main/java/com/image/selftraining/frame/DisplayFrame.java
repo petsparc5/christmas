@@ -32,8 +32,6 @@ public class DisplayFrame {
     private Buttons buttons;
     @Autowired
     private ButtonsListener buttonListener;
-    @Autowired
-    private Converter converter;
     private JFrame frame = new JFrame();
     private Image img;
     
@@ -45,8 +43,7 @@ public class DisplayFrame {
     
     @PostConstruct
     public void initialise() {
-        converter.convertAll();
-        images.loadAll("convertedPictures");
+        images.loadAll("pictures");
         frame.setSize(screenWidth, screenHeigh);
     }    
 

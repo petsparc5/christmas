@@ -1,8 +1,13 @@
 package com.image.selftraining.button;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -59,9 +64,15 @@ public class Buttons {
     }
 
     private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            ImageIcon icon = new ImageIcon(imgURL);
+        InputStream stream = getClass().getResourceAsStream(path);
+        BufferedImage image = null;
+		try {
+			image = ImageIO.read(stream);
+		} catch (IOException e) {
+			logger.error("Could not convert Icon to image");
+		}
+        if (image != null) {
+            ImageIcon icon = new ImageIcon(image);
             return icon;
         }
         logger.error("Could not load Icon at: {}", path);
