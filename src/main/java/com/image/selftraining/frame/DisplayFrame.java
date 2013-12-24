@@ -97,7 +97,12 @@ public class DisplayFrame {
             logger.warn("BackGround Picture is unavailiable!");
         }
         frame.setContentPane(new JPanel(new BorderLayout()) {
-            @Override public void paintComponent(Graphics g) {
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
             }
