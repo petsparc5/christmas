@@ -50,7 +50,7 @@ public class Converter {
     }
 
     private void convert(BufferedImage image, int n) {
-        String filename = "convertedPictures/Sea" + String.valueOf(n) + ".jpg";
+        String filename = "convertedPictures/Photo " + String.valueOf(n) + ".jpg";
         try { 
             //File outputfile = new File(filename);
             URL resource = getClass().getClassLoader().getResource(filename);
