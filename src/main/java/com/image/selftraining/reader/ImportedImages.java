@@ -23,7 +23,7 @@ public class ImportedImages {
     public void loadAll(String folder) {
         imageList = new ArrayList<BufferedImage>();
         String filename;
-        for (int i = 0; i < 48; i++) {
+        for (int i = 0; i < 57; i++) {
             filename = folder + "/Photo " + String.valueOf(i) + ".jpg";
             loadToTheList(filename);
         }
@@ -40,7 +40,7 @@ public class ImportedImages {
 
     public void setRandomImage() {
         Random generator = new Random();
-        position = generator.nextInt(48);
+        position = generator.nextInt(57);
     }
     
     public void setNextImage() {
